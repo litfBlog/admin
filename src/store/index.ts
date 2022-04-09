@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:48:19
- * @LastEditTime: 2022-04-09 19:08:23
+ * @LastEditTime: 2022-04-09 19:27:58
  * @LastEditors: litfa
  * @Description: store
  * @FilePath: /admin/src/store/index.ts
@@ -18,6 +18,6 @@ export const useCounterStore = defineStore('counter', {
   actions: {
     increment() {
       this.count++
-    },
-  },
+    }
+  }
 })
