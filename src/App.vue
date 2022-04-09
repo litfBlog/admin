@@ -1,3 +1,12 @@
+<!--
+ * @Author: litfa
+ * @Date: 2022-04-09 18:28:33
+ * @LastEditTime: 2022-04-09 19:49:20
+ * @LastEditors: litfa
+ * @Description: App
+ * @FilePath: /admin/src/App.vue
+ * 
+-->
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
@@ -7,6 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <el-button>112</el-button>
 </template>
 
 <style>
