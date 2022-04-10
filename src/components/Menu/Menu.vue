@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 14:16:58
- * @LastEditTime: 2022-04-10 15:20:59
+ * @LastEditTime: 2022-04-10 19:20:11
  * @LastEditors: litfa
  * @Description: 左侧菜单
  * @FilePath: /admin/src/components/Menu/Menu.vue
@@ -39,22 +39,22 @@ const isCollapse = ref(false)
       <el-menu-item-group title="管理权限">
         <el-menu-item index="2-3">Option 3</el-menu-item>
       </el-menu-item-group>
-    </el-sub-menu>
-    <el-sub-menu index="3">
+    </el-sub-menu>-->
+    <el-sub-menu index="articles">
       <template #title>
         <el-icon>
           <word theme="outline" size="24" fill="#333" :strokeWidth="3" />
-        </el-icon>文章管理
+        </el-icon>
+        <span>文章管理</span>
       </template>
-      <el-menu-item-group>
+      <el-menu-item index="/articles">文章列表</el-menu-item>
+      <!-- <el-menu-item-group>
         <template #title>用户管理</template>
-        <el-menu-item index="3-1">用户列表</el-menu-item>
-        <el-menu-item index="3-2">Option 2</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="Group 2">
+      </el-menu-item-group>-->
+      <!-- <el-menu-item-group title="Group 2">
         <el-menu-item index="3-3">Option 3</el-menu-item>
-      </el-menu-item-group>
-    </el-sub-menu>-->
+      </el-menu-item-group>-->
+    </el-sub-menu>
   </el-menu>
   <menu-fold-one
     v-if="isCollapse"
@@ -75,6 +75,9 @@ const isCollapse = ref(false)
 </template>
 
 <style lang="less" scoped>
+.el-menu {
+  --el-aside-width: auto;
+}
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;

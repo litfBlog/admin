@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:28:33
- * @LastEditTime: 2022-04-09 19:48:25
+ * @LastEditTime: 2022-04-10 18:54:34
  * @LastEditors: litfa
  * @Description: config
  * @FilePath: /admin/vite.config.ts
@@ -35,5 +35,12 @@ export default defineConfig({
     }),
     Components({
       resolvers: [ElementPlusResolver()]
-    })]
+    })
+  ],
+  server: {
+    proxy: {
+      // 字符串简写写法
+      '/api': 'http://localhost:3000'
+    }
+  }
 })
