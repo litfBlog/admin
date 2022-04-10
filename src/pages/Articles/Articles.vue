@@ -1,17 +1,18 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 18:32:52
- * @LastEditTime: 2022-04-10 19:21:14
+ * @LastEditTime: 2022-04-10 20:17:19
  * @LastEditors: litfa
  * @Description: 文章管理
  * @FilePath: /admin/src/pages/Articles/Articles.vue
  * 
 -->
 <script lang="ts" setup>
-import type { TableColumnCtx } from 'element-plus/es/components/table/src/table-column/defaults'
 import getArticlesApi from '@/apis/getArticles'
 import { ref } from 'vue'
 import dayjs from 'dayjs'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const articlesList = ref([])
 const getArticles = async () => {
   const { data: res } = await getArticlesApi()
@@ -21,6 +22,12 @@ getArticles()
 
 const formetDate = (row) => {
   return dayjs(Number(row.createDate)).format('YYYY-MM-DD HH:MM:ss')
+}
+
+const click = (e) => {
+  console.log(e)
+  router.push(`/articles/details/${e.row.id}`)
+
 }
 </script>
 
@@ -37,8 +44,8 @@ const formetDate = (row) => {
     <el-table-column prop="date" label="日期" sortable :formatter="formetDate" />
     <el-table-column prop="desc" label="简介" />
     <el-table-column fixed="right" label="操作" width="70">
-      <template #default>
-        <el-button type="text" size="small">详情</el-button>
+      <template #default="scope">
+        <el-button type="text" size="small" @click.prevent="click(scope)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>

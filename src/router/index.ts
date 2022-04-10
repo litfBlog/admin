@@ -2,7 +2,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:36:46
- * @LastEditTime: 2022-04-10 19:24:14
+ * @LastEditTime: 2022-04-10 19:45:41
  * @LastEditors: litfa
  * @Description: router
  * @FilePath: /admin/src/router/index.ts
@@ -43,7 +43,7 @@ const routes = [
     component: () => import('@/pages/Articles/Articles.vue')
   },
   {
-    path: '/articles/details',
+    path: '/articles/details/:id',
     component: () => import('@/pages/Articles/Details.vue')
   }
 ]
