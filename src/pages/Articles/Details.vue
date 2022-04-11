@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 19:21:48
- * @LastEditTime: 2022-04-10 20:18:46
+ * @LastEditTime: 2022-04-10 21:01:37
  * @LastEditors: litfa
  * @Description: 文章详情
  * @FilePath: /admin/src/pages/Articles/Details.vue
@@ -9,6 +9,7 @@
 -->
 <script lang="ts" setup>
 import User from '@/components/User/User.vue'
+import Articles from '@/components/Articles/Articles.vue'
 import { useRoute } from 'vue-router'
 import getArticlesDetailsApi from '@/apis/getArticlesDetails'
 import { ref } from 'vue'
@@ -32,6 +33,18 @@ getArticlesDetails()
       permissions: data.permissions
     }"
   ></User>
+  <Articles
+    v-bind="{
+      content: data.content,
+      cover: data.cover,
+      id: data.id,
+      desc: data.desc,
+      likes_count: data.likes_count,
+      status: data.status,
+      title: data.title,
+      uuid: data.uuid
+    }"
+  ></Articles>
 </template>
 
 <style lang="less" scoped>
