@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 14:16:58
- * @LastEditTime: 2022-04-10 19:20:11
+ * @LastEditTime: 2022-04-11 15:28:03
  * @LastEditors: litfa
  * @Description: 左侧菜单
  * @FilePath: /admin/src/components/Menu/Menu.vue
@@ -25,21 +25,17 @@ const isCollapse = ref(false)
       <el-menu-item index="/check/comment">评论审核</el-menu-item>
       <el-menu-item index="/check/friend-link">友链审核</el-menu-item>
     </el-sub-menu>
-    <!-- <el-sub-menu index="2">
+    <el-sub-menu index="users">
       <template #title>
         <el-icon>
           <user theme="outline" size="24" fill="#333" :strokeWidth="3" />
         </el-icon>用户管理
       </template>
-      <el-menu-item-group>
+      <el-menu-item index="/users">用户列表</el-menu-item>
+      <!-- <el-menu-item-group>
         <template #title>用户管理</template>
-        <el-menu-item index="2-1">用户列表</el-menu-item>
-        <el-menu-item index="2-2">所有用户</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="管理权限">
-        <el-menu-item index="2-3">Option 3</el-menu-item>
-      </el-menu-item-group>
-    </el-sub-menu>-->
+      </el-menu-item-group>-->
+    </el-sub-menu>
     <el-sub-menu index="articles">
       <template #title>
         <el-icon>
