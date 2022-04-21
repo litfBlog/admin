@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-21 18:09:56
- * @LastEditTime: 2022-04-21 18:35:56
+ * @LastEditTime: 2022-04-21 19:35:07
  * @LastEditors: litfa
  * @Description: 友链管理
  * @FilePath: /admin/src/pages/FriendLink.vue
@@ -12,6 +12,7 @@ import { getAllLinks } from '@/apis/friendLink'
 import setFriendLinkStatus from '@/apis/setFriendLinkStatus'
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import EditFriendLink from '@/components/EditFriendLink/EditFriendLink.vue'
 const list = ref([])
 const getFriendLink = async () => {
   const { data: res } = await getAllLinks()
@@ -56,13 +57,28 @@ const filterTag = (value: string, row: any) => {
   return row.status == value
 }
 
-const editRow = (id) => {
-  // 
+const editProps = ref<any>({})
+const showEdit = ref(false)
+const editKey = ref(Math.random())
+const editRow = (row) => {
+  editProps.value = {
+    id: row.id,
+    name: row.name,
+    desc: row.desc,
+    status: row.status,
+    url: row.url,
+    icon: row.icon,
+    view_in_home: Boolean(row.view_in_home),
+    user_id: row.user_id,
+    date: Number(row.date)
+  }
+  editKey.value = Math.random()
 }
 </script>
 
 <template>
   <h1>友链管理</h1>
+  <edit-friend-link :key="editKey" v-bind="editProps"></edit-friend-link>
   <el-table :data="list" style="width: 100%">
     <el-table-column prop="id" label="id" />
     <el-table-column
@@ -98,7 +114,7 @@ const editRow = (id) => {
         <a :href="data.row.url" target="_black" style="margin-right: 5px;">
           <el-button type="primary" size="small">查看网站</el-button>
         </a>
-        <el-button type="primary" size="small" @click="editRow(data.row.id)">修改</el-button>
+        <el-button type="primary" size="small" @click="editRow(data.row)">修改</el-button>
       </template>
     </el-table-column>
   </el-table>
