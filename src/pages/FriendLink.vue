@@ -1,20 +1,20 @@
 <!--
  * @Author: litfa
- * @Date: 2022-04-10 14:40:33
- * @LastEditTime: 2022-04-21 18:36:42
+ * @Date: 2022-04-21 18:09:56
+ * @LastEditTime: 2022-04-21 18:35:56
  * @LastEditors: litfa
- * @Description: 友链审核
- * @FilePath: /admin/src/pages/Check/FriendLink.vue
+ * @Description: 友链管理
+ * @FilePath: /admin/src/pages/FriendLink.vue
  * 
 -->
 <script lang="ts" setup>
-import getFriendLinkApi from '@/apis/friendLink'
+import { getAllLinks } from '@/apis/friendLink'
 import setFriendLinkStatus from '@/apis/setFriendLinkStatus'
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 const list = ref([])
 const getFriendLink = async () => {
-  const { data: res } = await getFriendLinkApi()
+  const { data: res } = await getAllLinks()
   list.value = res.data
 }
 getFriendLink()
@@ -31,11 +31,59 @@ const accept = async (id, accept) => {
     ElMessage.warning('失败')
   }
 }
+
+const tagType = (status): 'success' | 'warning' | '' => {
+  if (status == 1) {
+    return 'success'
+  } else if (status == 2) {
+    return 'warning'
+  } else if (status == 0) {
+    return ''
+  }
+}
+
+const tagText = (status: number): string => {
+  if (status == 1) {
+    return '正常'
+  } else if (status == 2) {
+    return '封禁'
+  } else if (status == 0) {
+    return '未审核'
+  }
+}
+
+const filterTag = (value: string, row: any) => {
+  return row.status == value
+}
+
+const editRow = (id) => {
+  // 
+}
 </script>
 
 <template>
-  <h1>友链审核</h1>
+  <h1>友链管理</h1>
   <el-table :data="list" style="width: 100%">
+    <el-table-column prop="id" label="id" />
+    <el-table-column
+      prop="status"
+      label="状态"
+      width="100"
+      :filters="[
+        { text: '未审核', value: '0' },
+        { text: '正常', value: '1' },
+        { text: '封禁', value: '2' },
+      ]"
+      :filter-method="filterTag"
+      filter-placement="bottom-end"
+    >
+      <template #default="scope">
+        <el-tag
+          :type="tagType(scope.row.status)"
+          disable-transitions
+        >{{ tagText(scope.row.status) }}</el-tag>
+      </template>
+    </el-table-column>
     <el-table-column prop="name" label="网站名" width="180" />
     <el-table-column prop="desc" label="介绍" width="180" />
     <el-table-column prop="url" label="首页地址" width="180" />
@@ -50,12 +98,7 @@ const accept = async (id, accept) => {
         <a :href="data.row.url" target="_black" style="margin-right: 5px;">
           <el-button type="primary" size="small">查看网站</el-button>
         </a>
-        <el-button type="success" size="small" @click="accept(data.row.id, true)">通过</el-button>
-        <el-popconfirm title="确定要拒绝吗?" @confirm="accept(data.row.id, false)">
-          <template #reference>
-            <el-button type="warning" size="small">拒绝</el-button>
-          </template>
-        </el-popconfirm>
+        <el-button type="primary" size="small" @click="editRow(data.row.id)">修改</el-button>
       </template>
     </el-table-column>
   </el-table>

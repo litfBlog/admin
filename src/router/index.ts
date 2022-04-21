@@ -2,7 +2,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-04-09 18:36:46
- * @LastEditTime: 2022-04-11 15:28:58
+ * @LastEditTime: 2022-04-21 18:10:04
  * @LastEditors: litfa
  * @Description: router
  * @FilePath: /admin/src/router/index.ts
@@ -49,6 +49,10 @@ const routes = [
   {
     path: '/users',
     component: () => import('@/pages/Users/Users.vue')
+  },
+  {
+    path: '/friend-link',
+    component: () => import('@/pages/FriendLink.vue')
   }
 ]
 
