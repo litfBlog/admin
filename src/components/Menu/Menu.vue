@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 14:16:58
- * @LastEditTime: 2022-04-21 18:08:43
+ * @LastEditTime: 2022-04-21 20:27:01
  * @LastEditors: litfa
  * @Description: 左侧菜单
  * @FilePath: /admin/src/components/Menu/Menu.vue
@@ -14,6 +14,9 @@ const isCollapse = ref(false)
 </script>
 <template>
   <el-menu :default-openeds="['check']" router :collapse="isCollapse">
+    <div
+      style="font-size: 20px; font-weight: 600; color: #2c3e50; padding: 30px 5px;"
+    >LitfPress 后台系统</div>
     <el-sub-menu index="check">
       <template #title>
         <el-icon>

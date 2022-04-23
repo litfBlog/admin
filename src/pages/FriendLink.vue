@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-21 18:09:56
- * @LastEditTime: 2022-04-21 19:35:07
+ * @LastEditTime: 2022-04-22 14:35:27
  * @LastEditors: litfa
  * @Description: 友链管理
  * @FilePath: /admin/src/pages/FriendLink.vue
@@ -80,7 +80,7 @@ const editRow = (row) => {
   <h1>友链管理</h1>
   <edit-friend-link :key="editKey" v-bind="editProps"></edit-friend-link>
   <el-table :data="list" style="width: 100%">
-    <el-table-column prop="id" label="id" />
+    <el-table-column prop="id" label="id" width="50" />
     <el-table-column
       prop="status"
       label="状态"
@@ -100,6 +100,7 @@ const editRow = (row) => {
         >{{ tagText(scope.row.status) }}</el-tag>
       </template>
     </el-table-column>
+    <el-table-column prop="view_in_home" label="首页展示" />
     <el-table-column prop="name" label="网站名" width="180" />
     <el-table-column prop="desc" label="介绍" width="180" />
     <el-table-column prop="url" label="首页地址" width="180" />

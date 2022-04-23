@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-09 18:28:33
- * @LastEditTime: 2022-04-10 18:24:55
+ * @LastEditTime: 2022-04-21 20:25:21
  * @LastEditors: litfa
  * @Description: App
  * @FilePath: /admin/src/App.vue
@@ -15,9 +15,6 @@ import Menu from '@/components/Menu/Menu.vue'
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>
-        <Header></Header>
-      </el-header>
       <el-container>
         <el-aside width="200px">
           <el-scrollbar>
