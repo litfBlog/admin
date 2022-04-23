@@ -1,15 +1,16 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 14:46:17
- * @LastEditTime: 2022-04-23 16:27:06
+ * @LastEditTime: 2022-04-23 16:37:28
  * @LastEditors: litfa
  * @Description: 文章审核
  * @FilePath: /admin/src/pages/Check/Articles.vue
  * 
 -->
 <script lang="ts" setup>
-import { get } from '@/apis/articles'
+import { get, set } from '@/apis/articles'
 import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 const articles = ref([])
 const getArticles = async () => {
   const { data: res } = await get()
@@ -17,8 +18,17 @@ const getArticles = async () => {
 }
 getArticles()
 
-const accept = (id: number, accept: boolean) => {
-  // 
+const accept = async (id: number, accept: boolean) => {
+  const { data: res } = await set(accept, id)
+  if (res.status == 1) {
+    ElMessage.success('成功')
+    articles.value.splice(
+      articles.value.findIndex(e => e.id == id),
+      1
+    )
+  } else {
+    ElMessage.success('失败')
+  }
 }
 </script>
 
