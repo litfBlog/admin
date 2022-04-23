@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 20:04:22
- * @LastEditTime: 2022-04-11 14:11:29
+ * @LastEditTime: 2022-04-23 16:25:37
  * @LastEditors: litfa
  * @Description: 文章详情
  * @FilePath: /admin/src/components/Articles/Articles.vue
@@ -31,7 +31,7 @@ const props = defineProps(propNames)
     </div>
     <div>
       <span>封面:</span>
-      <img :src="`http://127.0.0.1:3000${props.cover}`" />
+      <img :src="props.cover" />
     </div>
     <div>
       <span>简介:</span>
