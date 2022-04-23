@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 20:04:22
- * @LastEditTime: 2022-04-23 16:25:37
+ * @LastEditTime: 2022-04-23 16:53:40
  * @LastEditors: litfa
  * @Description: 文章详情
  * @FilePath: /admin/src/components/Articles/Articles.vue
@@ -40,10 +40,6 @@ const props = defineProps(propNames)
     <div>
       <span>点赞:</span>
       <span>{{ likes_count }}</span>
-    </div>
-    <div>
-      <span>uuid:</span>
-      <span>{{ uuid }}</span>
     </div>
   </el-card>
   <Content v-bind="props"></Content>

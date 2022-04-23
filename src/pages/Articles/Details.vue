@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 19:21:48
- * @LastEditTime: 2022-04-10 21:01:37
+ * @LastEditTime: 2022-04-23 16:53:05
  * @LastEditors: litfa
  * @Description: 文章详情
  * @FilePath: /admin/src/pages/Articles/Details.vue
@@ -41,8 +41,7 @@ getArticlesDetails()
       desc: data.desc,
       likes_count: data.likes_count,
       status: data.status,
-      title: data.title,
-      uuid: data.uuid
+      title: data.title
     }"
   ></Articles>
 </template>
