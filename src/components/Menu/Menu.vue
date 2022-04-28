@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 14:16:58
- * @LastEditTime: 2022-04-21 20:27:01
+ * @LastEditTime: 2022-04-27 17:26:14
  * @LastEditors: litfa
  * @Description: 左侧菜单
  * @FilePath: /admin/src/components/Menu/Menu.vue
@@ -24,6 +24,7 @@ const isCollapse = ref(false)
         </el-icon>
         <span>内容审核</span>
       </template>
+      <el-menu-item index="/check/report">举报处理</el-menu-item>
       <el-menu-item index="/check/articles">文章审核</el-menu-item>
       <el-menu-item index="/check/comment">评论审核</el-menu-item>
       <el-menu-item index="/check/friend-link">友链审核</el-menu-item>
