@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-27 17:24:50
- * @LastEditTime: 2022-04-28 17:33:33
+ * @LastEditTime: 2022-04-28 18:00:04
  * @LastEditors: litfa
  * @Description: 举报
  * @FilePath: /admin/src/pages/Check/Report.vue
@@ -61,7 +61,7 @@ const typeToString = (key: string) => {
 }
 
 const viewUrl = (type: string, id: number): string => {
-  return `#/${type}/details/${id}`
+  return `#/${type == 'user' ? 'users' : type}/details/${id}`
 }
 
 const solve = async (status: number, id: number) => {
@@ -93,7 +93,7 @@ const solve = async (status: number, id: number) => {
           <template #reference>
             <el-button size="small">查看详情</el-button>
           </template>
-          <a :href="viewUrl(data.row.type, data.row.id)" target="_blank">
+          <a :href="viewUrl(data.row.type, data.row.report_id)" target="_blank">
             <el-button>查看被举报内容</el-button>
           </a>
           <!-- <a :href="viewUrl(data.row.type, data.row.id)">

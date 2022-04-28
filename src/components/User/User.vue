@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 19:36:43
- * @LastEditTime: 2022-04-28 17:52:44
+ * @LastEditTime: 2022-04-28 17:58:04
  * @LastEditors: litfa
  * @Description: 用户卡片
  * @FilePath: /admin/src/components/User/User.vue
@@ -18,7 +18,9 @@ const props = defineProps(propNames)
     <template #header>
       <div class="card-header">
         <span>{{ username }}</span>
-        <el-button class="button" type="text">用户详情</el-button>
+        <a :href="`#/users/details/${author_id}`" target="_blank">
+          <el-button class="button" type="text">用户详情</el-button>
+        </a>
       </div>
     </template>
     <div>
