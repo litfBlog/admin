@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 19:36:43
- * @LastEditTime: 2022-04-10 20:54:06
+ * @LastEditTime: 2022-04-28 17:52:44
  * @LastEditors: litfa
  * @Description: 用户卡片
  * @FilePath: /admin/src/components/User/User.vue
@@ -44,6 +44,14 @@ const props = defineProps(propNames)
     <div>
       <span>权限等级:</span>
       <span>{{ permissions }}</span>
+    </div>
+    <div>
+      <span>openid:</span>
+      <span>{{ openid }}</span>
+    </div>
+    <div>
+      <span>unionid:</span>
+      <span>{{ unionid }}</span>
     </div>
   </el-card>
 </template>
