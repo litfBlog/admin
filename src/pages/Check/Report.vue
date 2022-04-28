@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-27 17:24:50
- * @LastEditTime: 2022-04-28 17:26:06
+ * @LastEditTime: 2022-04-28 17:33:33
  * @LastEditors: litfa
  * @Description: 举报
  * @FilePath: /admin/src/pages/Check/Report.vue
@@ -93,13 +93,13 @@ const solve = async (status: number, id: number) => {
           <template #reference>
             <el-button size="small">查看详情</el-button>
           </template>
-          <a :href="viewUrl(data.row.type, data.row.id)">
+          <a :href="viewUrl(data.row.type, data.row.id)" target="_blank">
             <el-button>查看被举报内容</el-button>
           </a>
           <!-- <a :href="viewUrl(data.row.type, data.row.id)">
             <el-button>查看被举报用户</el-button>
           </a>-->
-          <a :href="viewUrl('user', data.row.originator_id)">
+          <a :href="viewUrl('user', data.row.originator_id)" target="_blank">
             <el-button>查看举报用户</el-button>
           </a>
         </el-popover>
@@ -107,9 +107,19 @@ const solve = async (status: number, id: number) => {
           <template #reference>
             <el-button type="primary" size="small" @click="1">处理</el-button>
           </template>
-          <el-button type="danger">确认内容有违规</el-button>
+          <el-popover placement="left" :width="200" trigger="hover">
+            <template #reference>
+              <el-button type="danger">确认内容有违规</el-button>
+            </template>
+            <a :href="viewUrl(data.row.type, data.row.originator_id)" target="_blank">
+              <el-button type="danger">处理被举报内容</el-button>
+            </a>
+            <a :href="viewUrl('user', data.row.originator_id)" target="_blank">
+              <el-button type="danger">处理被举报用户</el-button>
+            </a>
+            <el-button type="danger" @click="solve(1, data.row.id)">处理完成/不处理</el-button>
+          </el-popover>
           <el-button type="success" @click="solve(2, data.row.id)">举报内容无违规</el-button>
-          <el-button type="warning">内容无违规，并处理举报者</el-button>
         </el-popover>
       </template>
     </el-table-column>
