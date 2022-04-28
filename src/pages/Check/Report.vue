@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-27 17:24:50
- * @LastEditTime: 2022-04-27 19:05:33
+ * @LastEditTime: 2022-04-28 17:26:06
  * @LastEditors: litfa
  * @Description: 举报
  * @FilePath: /admin/src/pages/Check/Report.vue
@@ -11,6 +11,8 @@
 import getReportApi from '@/apis/getReport'
 import { ref } from 'vue'
 import formatDate from '@/utils/formatDate'
+import solveReport from '@/apis/solveReport'
+import { ElMessage } from 'element-plus'
 const list = ref([])
 const getReport = async () => {
   const { data: res } = await getReportApi()
@@ -61,6 +63,14 @@ const typeToString = (key: string) => {
 const viewUrl = (type: string, id: number): string => {
   return `#/${type}/details/${id}`
 }
+
+const solve = async (status: number, id: number) => {
+  const { data: res } = await solveReport(id, status)
+  if (res.status == 1) {
+    ElMessage.success('成功')
+    getReport()
+  }
+}
 </script>
 
 <template>
@@ -98,7 +108,7 @@ const viewUrl = (type: string, id: number): string => {
             <el-button type="primary" size="small" @click="1">处理</el-button>
           </template>
           <el-button type="danger">确认内容有违规</el-button>
-          <el-button type="success">举报内容无违规</el-button>
+          <el-button type="success" @click="solve(2, data.row.id)">举报内容无违规</el-button>
           <el-button type="warning">内容无违规，并处理举报者</el-button>
         </el-popover>
       </template>
