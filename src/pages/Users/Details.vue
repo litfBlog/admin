@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-11 16:55:11
- * @LastEditTime: 2022-04-28 17:57:26
+ * @LastEditTime: 2022-04-28 20:05:42
  * @LastEditors: litfa
  * @Description: 用户详情
  * @FilePath: /admin/src/pages/Users/Details.vue
@@ -9,6 +9,7 @@
 -->
 <script lang="ts" setup>
 import User from '@/components/User/User.vue'
+import SetUser from '@/components/SetUser/SetUser.vue'
 import { getuserInfo as getuserInfoApi } from '@/apis/getUsers'
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
@@ -34,6 +35,7 @@ getuserInfo()
     :openid="data.openid"
     :unionid="data.unionid"
   ></User>
+  <SetUser v-if="data.id != undefined" :data="data"></SetUser>
 </template>
 
 <style lang="less" scoped>
