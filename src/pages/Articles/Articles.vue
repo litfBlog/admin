@@ -1,7 +1,7 @@
 <!--
  * @Author: litfa
  * @Date: 2022-04-10 18:32:52
- * @LastEditTime: 2022-04-11 15:16:09
+ * @LastEditTime: 2022-04-29 14:23:52
  * @LastEditors: litfa
  * @Description: 文章管理
  * @FilePath: /admin/src/pages/Articles/Articles.vue
@@ -21,7 +21,7 @@ const getArticles = async () => {
 getArticles()
 
 const formetDate = (row) => {
-  return dayjs(Number(row.createDate)).format('YYYY-MM-DD HH:MM:ss')
+  return dayjs(Number(row.create_date)).format('YYYY-MM-DD HH:MM:ss')
 }
 
 const click = (e) => {
