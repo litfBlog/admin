@@ -1,7 +1,7 @@
 /*
  * @Author: litfa
  * @Date: 2022-03-07 09:58:47
- * @LastEditTime: 2022-04-10 18:08:13
+ * @LastEditTime: 2022-05-02 19:21:47
  * @LastEditors: litfa
  * @Description: axios
  * @FilePath: /admin/src/utils/request.ts
@@ -10,7 +10,7 @@
 import axios from 'axios'
 import router from '@/router/index'
 
-axios.defaults.baseURL = '/api/admin'
+axios.defaults.baseURL = import.meta.env.VITE_ApiBaseurl
 
 // http request 拦截器
 axios.interceptors.request.use(
